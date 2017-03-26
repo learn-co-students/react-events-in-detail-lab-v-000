@@ -1,24 +1,29 @@
 const React = require('react');
 
+
 class DelayedButton extends React.Component {
-  constructor() {
+  constructor(){
     super();
 
-    this.handleClick = this.handleClick.bind(this);
+    this.onClick = this.onClick.bind(this)
   }
 
-  handleClick(event) {
-    event.persist();
-    setTimeout(() => {
-      this.props.onDelayedClick(event);
-    }, this.props.delay);
+  onClick(event){
+    event.persist(); // this allows us to store the event and call it
+    
+    setTimeout(
+      () => {
+        this.props.onDelayedClick(event)}, this.props.delay); 
   }
 
-  render() {
-    return (
-      <button onClick={this.handleClick}>Delayed</button>
+  render(){
+    return(
+      <button onClick={this.onClick}>Click</button>
     );
-  }
+  };
+
 }
+// setTimeout(function(){ 
+//   alert("Hello"); }, 3000);
 
 module.exports = DelayedButton;

@@ -4,19 +4,19 @@ class CoordinatesButton extends React.Component {
   constructor(){
     super();
 
-    this.handleClick = this.handleClick.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-  handleClick(event){
+  onClick(event){
     const xTarget = event.pageX;
     const yTarget = event.pageY;
-
+    console.log(xTarget)
     this.props.onReceiveCoordinates([xTarget, yTarget])
   }
 
   render(){
     return (
-       <button onClick={this.handleClick}>Get The Mouse Coords!</button>
+       <button onClick={this.onClick}>Get The Mouse Coords!</button>
     );
   }
 
