@@ -1,0 +1,23 @@
+import React from 'react';
+
+class DelayedButton extends React.Component {
+  constructor() {
+    super();
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    event.persist();
+    setTimeout(function() {
+      this.props.onDelayedClick(event);
+    }, this.props.delay);
+  }
+
+  render() {
+    return <button onClick={this.handleClick}>click</button>;
+  }
+}
+
+export default DelayedButton
+
