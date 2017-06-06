@@ -1,7 +1,7 @@
 import React from 'react';
 
 class CoordinatesButton extends React.Component {
-    handleClick = (event) => {
+    handleClick(event) {
     console.log(event.type); // prints 'click'
   }
  
