@@ -2,17 +2,11 @@
 import React from 'react';
 
 class DelayedButton extends React.Component {
-
- 
-
-  
-  onDelayedClick = (event) => {
+  myClick = (event) => {
     event.persist();
-    const delay = 50;
-    let prt = () => {
-      console.log(event.type);
-    }
-    setTimeout(prt, delay);
+    // setTimeout(() => {
+    //   this.props(event);
+    // }, this.props.delay);
   }
 
 
@@ -20,17 +14,16 @@ class DelayedButton extends React.Component {
   render() {
     return (
       <div>
-      <button onClick={this.onDelayedClick} >Delayed button
+      <button onClick={this.myClick} >Delayed button
       </button>
-
       </div>
-
-
     )
   }
 }
 
-export default DelayedButton
+export DelayedButton;
+
+
 
 
 
