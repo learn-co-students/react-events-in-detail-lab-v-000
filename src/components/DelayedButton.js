@@ -1,29 +1,21 @@
-// Code DelayedButton Component Here
 import React from 'react';
 
 class DelayedButton extends React.Component {
   myClick = (event) => {
     event.persist();
-    // setTimeout(() => {
-    //   this.props(event);
-    // }, this.props.delay);
+    setTimeout(() => {
+      this.props.onDelayedClick(event);
+    }, this.props.delay);
   }
-
-
 
   render() {
     return (
-      <div>
-      <button onClick={this.myClick} >Delayed button
-      </button>
-      </div>
-    )
+      <button onClick={this.myClick}>Delayed Button</button>
+    );
   }
 }
 
-export DelayedButton;
-
-
+export default DelayedButton
 
 
 
