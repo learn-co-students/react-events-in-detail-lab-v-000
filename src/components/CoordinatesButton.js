@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-export default class CoordinatesButton extends React.Component {
+export default class CoordinatesButton extends Component {
   constructor() {
      super();
-
      this.handleClick = this.handleClick.bind(this);
    }
 
