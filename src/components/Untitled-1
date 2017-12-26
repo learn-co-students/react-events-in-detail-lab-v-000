@@ -1,0 +1,267 @@
+So, React creates a synthetic event object to represent the event that occurred on the page
+
+Kevin Webster AN HOUR AGO
+That synthetic event is only defined while the callback for that event is active
+Greg B AN HOUR AGO
+yes. So far I am with you
+
+Greg B AN HOUR AGO
+if you are inside the callback and you console.log that event, I'm not clear how it would be already null
+
+Greg B AN HOUR AGO
+since "That synthetic event is only defined while the callback for that event is active"
+
+Greg B AN HOUR AGO
+do you know which instructor would have office hours for this topic? and is there a link to schedule available?
+
+
+Kevin Webster AN HOUR AGO
+Hmm, it shouldn't already be null if you are trying to log the event in the callback
+
+Kevin Webster AN HOUR AGO
+I don't think anyone has office hours specifically for this topic, but you can schedule 1:1 meeting with a 1:1 coach if you'd like
+
+Kevin Webster AN HOUR AGO
+Though we should be able to get it sorted here as well
+
+Kevin Webster AN HOUR AGO
+Are you have particular trouble with an event?
+Greg B AN HOUR AGO
+is there a link somewhere to schedule a 1:1?
+
+Greg B AN HOUR AGO
+No specific event, just trying to go through the examples and explain what is going on, and it isn't making sense.
+
+Greg B AN HOUR AGO
+From the lesson:
+
+Greg B AN HOUR AGO
+If we click the button of our Clicker component and then inspect the logged out object in our console, we notice that all properties are null again. By the time we inspect the object in our browser, the event object will have already been returned to the pool. This means that we can't access event data in an asynchronous manner by saving it in the state, or running a timeout and then accessing the event again.
+
+Greg B AN HOUR AGO
+and the example of event pooling on the react documentation also shows that console.log(event) within onClick(event) logs the event as null
+
+
+Kevin Webster AN HOUR AGO
+So, you can schedule a meeting here, though it is normally reserved for Portfolio Projects
+
+Kevin Webster AN HOUR AGO
+https://theflatironschool.typeform.com/to/UUhrc7
+
+Kevin Webster AN HOUR AGO
+Or if you are having specific conceptual issues, I believe you can book a 1:1 with an instructor here: https://theflatironschool.typeform.com/to/Xva2Br
+
+Kevin Webster AN HOUR AGO
+And ah, ok - so, the event itself will not be null
+
+Kevin Webster AN HOUR AGO
+But its properties will be
+
+Kevin Webster AN HOUR AGO
+The synthetic event that is passed to a callback is reused over and over again
+
+Kevin Webster AN HOUR AGO
+So, all of it's properties are set to null once the callback we are using it for is done running
+Greg B AN HOUR AGO
+on the react documentation example: there is console.log(event) //=> nullified object
+
+Greg B AN HOUR AGO
+console.log(event.type) // => "click"
+
+
+Kevin Webster 44 MINUTES AGO
+Nullified object just mean that that objects properties have values of null - but the object itself still exists
+Greg B 43 MINUTES AGO
+ah okay
+
+
+Kevin Webster 43 MINUTES AGO
+So, I think this concept is best illustrated using debugger
+
+Kevin Webster 43 MINUTES AGO
+Do you have a click event you can test?
+Greg B 43 MINUTES AGO
+yes
+
+
+Kevin Webster 43 MINUTES AGO
+Ok, great! May I see it?
+
+Kevin Webster 42 MINUTES AGO
+Just the callback function itself
+gb23 41 MINUTES AGO
+export default class Clicker extends React.Component { handleClick = (event) => { console.log(event.type); // prints 'click' } render() { return ( <button onClick={this.handleClick}>Click me!</button> ); } }
+
+gb23 41 MINUTES AGO
+export default class Clicker extends React.Component {
+ 
+  handleClick = (event) => {
+    console.log(event.type); // prints 'click'
+  }
+ 
+  render() {
+    return (
+      <button onClick={this.handleClick}>Click me!</button>
+    );
+  }
+}
+
+
+kwebster2 41 MINUTES AGO
+Perfect! Ok, so first, let's log the event itself
+
+kwebster2 41 MINUTES AGO
+So, in our handleClick function, let's run console.log(event)
+
+kwebster2 41 MINUTES AGO
+Then, in your browser, go ahead and click the button, and then inspect what is logged to the console
+gb23 37 MINUTES AGO
+okay. looking for this example in VScode, but found this one instead
+
+gb23 37 MINUTES AGO
+export default class EyesOnMe extends React.Component{
+    focus = (event) =>{
+        debugger;
+        console.log(event)
+        console.log('Good!');
+    }
+    blur = () => {
+        console.log('Hey! Eyes on me!');
+    }
+    render(){
+        return (
+            <button onFocus={this.focus} onBlur={this.blur}></button>
+        );
+    }
+}
+
+
+kwebster2 37 MINUTES AGO
+You should see a SyntheticEvent object that has a bunch of null properties, like so:
+gb23 37 MINUTES AGO
+so I put the debugger in the focus call back
+
+
+kwebster2 35 MINUTES AGO
+
+
+kwebster2 35 MINUTES AGO
+Right - so, if you then put a debugger at the end of your callback, that will keep your callback function "active"
+
+kwebster2 34 MINUTES AGO
+So, if you inspect the logged event when you have the debugger in there, you should see that all of the properties have values now
+
+kwebster2 34 MINUTES AGO
+So the event is still "active" within this callback
+
+kwebster2 34 MINUTES AGO
+Since the callback function is paused (and has not finished)
+gb23 32 MINUTES AGO
+okay that makes sense. where did you put the debugger to get it to be nullified?
+
+
+kwebster2 32 MINUTES AGO
+As soon as you resume the script execution, the callback will finish running, which means that the event will go back into the pool to be re-used, and it's properties will be null again
+
+kwebster2 32 MINUTES AGO
+Well, the debugger should stop it from being nullified. It should be nullified without the debugger
+gb23 32 MINUTES AGO
+yes that makes sense
+
+gb23 30 MINUTES AGO
+so my last question is what is meant by this line in the lesson: "This means that we can't access event data in an asynchronous manner by saving it in the state, or running a timeout and then accessing the event again."
+
+gb23 29 MINUTES AGO
+asynchronous manner means within a callback, right?
+
+
+kwebster2 26 MINUTES AGO
+Yep, essentially!
+
+kwebster2 24 MINUTES AGO
+so, let's imagine we set a timeout in that event handler callback
+gb23 24 MINUTES AGO
+okay so we can't access event data within a callback. this makes sense. so I just need some clarification, if you could, on what is meant by "saving it in the state or runnin g a timeout and then accessing the evenet again"
+
+gb23 24 MINUTES AGO
+okay
+
+
+kwebster2 24 MINUTES AGO
+focus = (event) =>{
+        setTimeout(function(){debugger; }, 3000);
+        console.log(event)
+        console.log('Good!');
+    	debugger
+    }
+
+kwebster2 23 MINUTES AGO
+If this function were to execute, which debugger would be hit first?
+gb23 23 MINUTES AGO
+so that'
+
+gb23 23 MINUTES AGO
+s saying wait 3 seconds and then execute setTimeout's callback, isn't it?
+
+
+kwebster2 21 MINUTES AGO
+Yep!
+
+kwebster2 21 MINUTES AGO
+But in the meantime, our callback will finish executing
+
+kwebster2 21 MINUTES AGO
+So, in that snippet, the second debugger , after console.log('Good!'), would be hit first
+gb23 20 MINUTES AGO
+okay so the second debugger will be hit first
+
+
+kwebster2 20 MINUTES AGO
+Exactly. And then if we continued with the script execution, our event handler callback function would finish executing
+
+kwebster2 19 MINUTES AGO
+And then three seconds later, our callback function that we passed to setTimeout will be called (after the event handler callback function has already been executed, so is no longer "active":wink:
+
+kwebster2 19 MINUTES AGO
+Which means that the synthetic event has already been nullified by the time out setTimeout callback is executed
+gb23 18 MINUTES AGO
+okay cool!
+
+gb23 17 MINUTES AGO
+but it would be possible to assign it to a variable while it has not been nullified, I'd imagine
+
+gb23 17 MINUTES AGO
+I'll have to test it out
+
+gb23 16 MINUTES AGO
+anyways, thanks for your time, you've been very very helpful
+
+
+kwebster2 15 MINUTES AGO
+So, we can assign a property of the event to a variable
+
+kwebster2 15 MINUTES AGO
+But we couldn't assign the entire object to a variable
+
+kwebster2 15 MINUTES AGO
+Well, we could, but technically that variable would reference the same synthetic event object, with its properties nullified
+
+kwebster2 15 MINUTES AGO
+We could create a clone of the object, and then save that cloned object in a variable to maintain the properties
+
+kwebster2 14 MINUTES AGO
+And no problem!
+gb23 13 MINUTES AGO
+in other words, assigning properties to a variable creates new memory whereas assigning the entire object to a variable just creates a reference
+
+
+kwebster2 12 MINUTES AGO
+exactyl!
+
+kwebster2 12 MINUTES AGO
+Exactly!*
+
+kwebster2 12 MINUTES AGO
+:100:
+gb23 12 MINUTES AGO
+cool. Thanks again. you are a learn.co gem
