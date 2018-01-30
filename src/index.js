@@ -7,7 +7,7 @@ import DelayedButton from './components/DelayedButton';
 
 ReactDOM.render(
   <div>
-    <CoordinatesButton />
+    <CoordinatesButton  />
     <DelayedButton />
   </div>,
   document.getElementById('global')
