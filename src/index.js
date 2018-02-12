@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import CoordinatesButton from './components/CoordinatesButton';
 import DelayedButton from './components/DelayedButton';
+import CoordinatesButton from './components/CoordinatesButton';
 
 ReactDOM.render(
   <div>
-    <CoordinatesButton />
     <DelayedButton />
+    <CoordinatesButton />
   </div>,
   document.getElementById('root')
 );
