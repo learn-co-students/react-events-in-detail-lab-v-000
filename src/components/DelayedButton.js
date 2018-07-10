@@ -4,14 +4,19 @@ class DelayedButton extends Component {
   
   defaultProps = {
     onDelayedClick: event => {
-      event.persist()
+      return event
     },
     delay: 10
   }
 
+  myCallback = event => {
+    const newEvent = event.persist()
+    setTimeout(() => this.props.onDelayedClick(newEvent), this.props.delay);
+  }
+
   render () {
     return (
-      <button onClick={setTimeout(this.props.onDelayedClick, this.props.delay)}></button>
+      <button onClick={this.myCallback}></button>
     )
   }
 }
