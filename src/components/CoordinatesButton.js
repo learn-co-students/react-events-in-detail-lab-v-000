@@ -2,16 +2,17 @@
 import React, { Component } from 'react';
 
 export default class CoordinatesButton extends Component {
-  // onReceiveCoordinates = () => {
-  //   console.log()
-  // }
 
   cordinateCreate = (e) => {
-    this.props.onReceiveCoordinates([e.clientX, e.clientY])
+    // this.props.onReceiveCoordinates([e.clientX, e.clientY])
+    debugger;
+    console.log("I'm hit!");
   }
+
+
   render() {
     return (
-      <button onClick={this.cordinateCreate}>Click me!</button>
+      <button onClick={this.cordinateCreate}> CORDINATES</button>
     )
   }
 }
