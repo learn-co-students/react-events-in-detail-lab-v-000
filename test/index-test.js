@@ -26,7 +26,7 @@ describe('<CoordinatesButton />', () => {
   const wrapper = shallow(<CoordinatesButton onReceiveCoordinates={spy} />);
 
   afterEach(function () {
-    spy.reset();
+    spy.resetHistory();
   });
 
   it('should have one button', () => {
@@ -50,8 +50,8 @@ describe('<DelayedButton />', () => {
   const wrapper = shallow(<DelayedButton onDelayedClick={spy} delay={DELAY} />);
 
   afterEach(function () {
-    spy.reset();
-    MOCKED_EVENT.persist.reset();
+    spy.resetHistory();
+    MOCKED_EVENT.persist.resetHistory();
   });
 
   it('should have one button', () => {
