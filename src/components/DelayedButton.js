@@ -13,9 +13,14 @@ export default class DelayedButton extends Component {
         // const event = e;  // Try 3
         // setTimeout(this.props.onDelayedClick,this.props.delay,event); 
         
-        e.persist;   // Try 4
-        setTimeout(this.props.onDelayedClick(e),this.props.delay);       
-    }
+        // e.persist;   // Try 4      
+        // setTimeout(this.props.onDelayedClick,this.props.delay,e); 
+        
+        // Solution from learn. Adding additional function seems to fix test failure 
+        e.persist();
+        setTimeout(() => {this.props.onDelayedClick(e);}, 
+                    this.props.delay);        
+    }    
 
     render() {
         return (
