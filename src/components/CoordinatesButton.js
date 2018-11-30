@@ -3,11 +3,13 @@ import React, {Component} from 'react';
 
 export default class CoordinatesButton extends Component {
 
-
+ handleClick = (e) => (
+   this.props.onReceiveCoordinates([e.clientX, e.clientY])
+ )
 
   render() {
     return (
-      <button onClick={(event) => this.props.onReceiveCoordinates([event.clientX, event.clientY])}>Button</button>
+      <button onClick={this.handleClick}>Button</button>
     )
   }
 }
