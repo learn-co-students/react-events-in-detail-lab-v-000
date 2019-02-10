@@ -8,8 +8,8 @@ class CoordinatesButton extends React.Component {
       let x = event.clientX;
       let y = event.clientY;
       let array = [x,y];
-  //    return X && Y;
-  this.props.onReceiveCoordinates(array)
+
+      this.props.onReceiveCoordinates(array)
   }
 
   render() {
