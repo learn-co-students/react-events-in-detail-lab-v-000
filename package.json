@@ -24,6 +24,7 @@
     "mocha-multi": "^1.0.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-timeout": "^1.2.0",
     "sinon": "^3.1.4"
   },
   "scripts": {
