@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 export default class DelayedButton extends Component {
 
 	myFunction = (event) => {
-		let e = event.persist();
+		event.persist();
 		this.props.onDelayedClick(event);
 	}
 
