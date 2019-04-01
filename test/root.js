@@ -1,4 +1,4 @@
-require('babel-register')();
+require('babel-core/register')();
 
 var exposedProperties = ['window', 'navigator', 'document'];
 
