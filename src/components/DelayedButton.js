@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 export default class DelayedButton extends Component {
 	handelClick = (e) => {
 		e.persist();
+
 		setTimeout(() => this.props.onDelayedClick(e), this.props.delay);
 	};
 
