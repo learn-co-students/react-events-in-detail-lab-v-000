@@ -1,17 +1,20 @@
 // Code CoordinatesButton Component Here
-import React from 'react'
+import React, {Component} from 'react'
 
-class CoordinatesButton extends React.Component {
+class CoordinatesButton extends Component{
 
-  //make click handler & pass event as argument
+  //make click handler & pass event as argument   & pass coord to props.onReceiveCoordinates
   handleClick = (event) => {
-    this.props.onReceiveCoordinates([event.clientX, event.clientY]) //pass coord to props.onReceiveCoordinates
-  }
+    this.props.onReceiveCoordinates([event.clientX, event.clientY])
+  }  
+  
 
   //render button & pass to clickHandler onClick
   render() {
     return (
-      <button onClick={this.handleClick}>Coordinates</button>
+      <div>
+        <button onClick={this.handleClick}>Click for Coordinates</button>
+      </div>
     )
   }
 }
