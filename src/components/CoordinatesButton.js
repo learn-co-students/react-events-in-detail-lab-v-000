@@ -11,7 +11,7 @@ class CoordinatesButton extends React.Component{
 
   render() {
     return(
-      <div></div>
+      <button></button>
     )
   }
 }
