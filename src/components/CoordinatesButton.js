@@ -2,16 +2,13 @@ import React from 'react';
 
 class CoordinatesButton extends React.Component{
 
-  constructor(prop) {
-    super(prop)
-    this.state = {
-
-    }
+  handleClick = (event) => {
+    this.props.onReceiveCoordinates([event.clientX, event.clientY]); 
   }
 
   render() {
     return(
-      <button></button>
+      <button  onClick={this.handleClick} ></button>
     )
   }
 }
