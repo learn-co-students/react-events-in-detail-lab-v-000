@@ -11,10 +11,10 @@ handleClick = (event) => {
 	mouseCoordinates.push(event.clientX, event.clientY);  
 	}
 
-render(props) {
+render(props, mouseCoordinates) {
     return (
     	<div>
-    	<button onClick={this.handleClick.bind()}>
+    	<button onClick={this.handleClick}>
     	</button>
     	<div>{this.props.onReceiveCoordinates(mouseCoordinates)}</div>
     	</div>
