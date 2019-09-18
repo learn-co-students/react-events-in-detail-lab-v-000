@@ -5,10 +5,11 @@ import DelayedButton from './DelayedButton';
 
 export default class CoordinatesButton extends Component {
 
+const {mouseCoordinates} = [];
+
 
 handleClick = (event) => {
 	event.persist();
-	const mouseCoordinates = [];
 	mouseCoordinates.push(event.clientX, event.clientY);  //event pooling 
 }
 
