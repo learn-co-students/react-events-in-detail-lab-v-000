@@ -1,21 +1,21 @@
 // Code CoordinatesButton Component Here
 import React, { Component } from 'react';
-import DelayedButton from './DelayedButton';
+//import DelayedButton from './DelayedButton';
+
+const mouseCoordinates = [];
 
 
 export default class CoordinatesButton extends Component {
 
-const {mouseCoordinates} = [];
-
-
 handleClick = (event) => {
-	event.persist();
-	mouseCoordinates.push(event.clientX, event.clientY);  //event pooling 
-}
+	mouseCoordinates.push(event.clientX, event.clientY);  
+	}
 
-render() {
+render(mouseCoordinates) {
     return (
-    	<button onClick={this.props.onReceiveCoordinates(mouseCoordinates)}></button>
+    	<div><button onClick={this.handleClick.bind()}>
+    	</button>
+    	<div>{this.props.onReceiveCoordinates(mouseCoordinates)}</div></div>
     	)
     }
 }
