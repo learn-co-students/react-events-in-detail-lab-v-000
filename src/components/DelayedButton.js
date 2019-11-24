@@ -10,7 +10,7 @@ class DelayedButton extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}></button>
+        <button onClick={this.handleClick}>Get Delayed, Son!</button>
       </div>
     );
   }
