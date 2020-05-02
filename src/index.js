@@ -7,8 +7,8 @@ import DelayedButton from './components/DelayedButton';
 
 ReactDOM.render(
   <div>
-    <CoordinatesButton />
-    <DelayedButton />
+    <CoordinatesButton onReceiveCoordinates={coords => console.log(coords) } />
+    <DelayedButton onDelayedClick={delay => console.log(delay)} delay={5000}/>
   </div>,
   document.getElementById('global')
 );
