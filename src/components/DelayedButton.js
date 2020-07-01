@@ -4,7 +4,7 @@
         // prop within a setTimeout(). 
     // The setTimeout() should be set to this.props.delay.
 // If successful, the event will be logged to the console once the timeout has finished.
-// Hint: If you having trouble with this feature, remember event pooling in React. By the time the setTimeout fires, the event object will have already been returned to the pool. So how can we fix that?
+// Remember event pooling.
 // Tests passed: DelayedButton
 // ✓ should have one button
 // ✓ should call the callback prop after the delay 
