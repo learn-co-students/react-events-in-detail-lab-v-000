@@ -8,16 +8,19 @@ export default class  CoordinatesButton extends React.Component {
 
 
 
-  onReceiveCoordinates = (event) => {
+  onReceiveCoordinatesCallback = (event) => {
     // let array1 = [event.clientX, event.clientY]
-    // this.props.onReceiveCoordinates
-    console.log(event)
+    let array1 = []
+    array1.push(event.clientX, event.clientY)
+    this.props.onReceiveCoordinates(array1)
+    // console.log(event)
   }
 
 
   render() {
     return(
-      <button onClick={ () => {this.onReceiveCoordinatesCallback} > hi </button>
+      // <button onClick={ () => {this.props.onReceiveCoordinates} } > hi </button>
+      <button onClick={ this.onReceiveCoordinatesCallback } > hi </button>
     )
   }
 
