@@ -1,6 +1,6 @@
-import React, from 'react';
+import React from 'react';
 
-class CoordinatesButton extends React.Comnponent{
+class CoordinatesButton extends React.Component{
     array = (event) => {
         const coordinates = [event.clientX, event.clientY];
         this.props.onReceiveCoordinates(coordinates)
